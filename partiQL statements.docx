@@ -1,0 +1,39 @@
+							partiQL
+
+Insertion 
+ INSERT INTO 
+Music value {'Artist' : 'Acme Band','SongTitle' : 'PartiQL Rocks'}
+
+Deletion 
+syntax:
+DELETE FROM table 
+ WHERE condition [RETURNING returnvalues]
+ <returnvalues>  ::= ALL OLD *
+eg:
+DELETE FROM "Music" WHERE "Artist" = 'Acme Band' AND "SongTitle" = 'PartiQL Rocks' 
+
+Updation
+syntax:
+UPDATE  table  
+[SET | REMOVE]  path  [=  data] […]
+WHERE condition [RETURNING returnvalues]
+<returnvalues>  ::= [ALL OLD | MODIFIED OLD | ALL NEW | MODIFIED NEW] *
+eg:
+UPDATE Music 
+SET AwardsWon=1 
+SET AwardDetail={'Grammys':[2020, 2018]}  
+WHERE Artist='Acme Band' AND SongTitle='PartiQL Rocks'
+
+Select
+SELECT expression  [, ...] 
+FROM table[.index]
+[ WHERE condition ] [ [ORDER BY key [DESC|ASC] , ...]
+eg:
+SELECT * 
+FROM Orders 
+WHERE OrderID = 100
+
+SELECT * 
+FROM Orders 
+WHERE OrderID = 100 and Address='some address'
+
